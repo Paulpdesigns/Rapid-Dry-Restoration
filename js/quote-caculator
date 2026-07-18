@@ -78,9 +78,33 @@
     return true;
   }
 
+  function showValidationError(step) {
+    var panel = root.querySelector('.qc-panel[data-step="' + step + '"]');
+    if (!panel) return;
+    var err = panel.querySelector('[data-qc-error]');
+    if (err) err.classList.add('is-shown');
+    var grids = panel.querySelectorAll('.option-grid');
+    grids.forEach(function (grid) {
+      if (reduceMotion) return;
+      grid.classList.remove('is-shaking');
+      void grid.offsetWidth; // restart animation
+      grid.classList.add('is-shaking');
+    });
+  }
+  function hideValidationError(step) {
+    var panel = root.querySelector('.qc-panel[data-step="' + step + '"]');
+    if (!panel) return;
+    var err = panel.querySelector('[data-qc-error]');
+    if (err) err.classList.remove('is-shown');
+  }
+
   nextBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      if (!canAdvance(state.step)) return;
+      if (!canAdvance(state.step)) {
+        showValidationError(state.step);
+        return;
+      }
+      hideValidationError(state.step);
       if (state.step < totalSteps) {
         showStep(state.step + 1);
         updateEstimate();
@@ -100,6 +124,7 @@
       card.classList.add('is-selected');
       state.damageType = card.getAttribute('data-damage-type');
       root.querySelectorAll('[data-qc-next="1"]').forEach(function (b) { b.disabled = false; });
+      hideValidationError(1);
       renderStep3Options();
       updateEstimate();
     });
@@ -125,6 +150,7 @@
       root.querySelectorAll('[data-water-cat]').forEach(function (c) { c.classList.remove('is-selected'); });
       card.classList.add('is-selected');
       state.waterCategory = card.getAttribute('data-water-cat');
+      hideValidationError(3);
       updateEstimate();
     });
   });
@@ -133,6 +159,7 @@
       root.querySelectorAll('[data-mold-sev]').forEach(function (c) { c.classList.remove('is-selected'); });
       card.classList.add('is-selected');
       state.moldSeverity = card.getAttribute('data-mold-sev');
+      hideValidationError(3);
       updateEstimate();
     });
   });
@@ -244,11 +271,11 @@
       if (action.indexOf('YOUR_FORM_ID') !== -1 || action === '') {
         e.preventDefault();
         var success = document.getElementById('qcSuccess');
-        var wrap = document.getElementById('qcFormWrap');
-        if (success && wrap) {
-          wrap.style.display = 'none';
-          success.classList.add('is-visible');
-        }
+        // Hide only the form itself — it's a sibling of #qcSuccess inside
+        // #qcFormWrap, so hiding the whole wrap would hide the success
+        // message too and leave the page looking broken.
+        leadForm.style.display = 'none';
+        if (success) success.classList.add('is-visible');
       }
     });
   }
