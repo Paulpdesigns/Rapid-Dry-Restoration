@@ -91,6 +91,7 @@
             <span></span>
             <button type="button" class="btn btn-primary" data-qc-next="1" disabled>Continue</button>
           </div>
+          <p class="qc-error" data-qc-error>Pick an option above to continue.</p>
         </div>
 
         <!-- STEP 2: Square footage -->
@@ -153,9 +154,8 @@
             <button type="button" class="btn btn-outline" data-qc-back>Back</button>
             <button type="button" class="btn btn-primary" data-qc-next="3">Continue</button>
           </div>
+          <p class="qc-error" data-qc-error>Pick a severity level above to continue.</p>
         </div>
-
-        <!-- STEP 4: Urgency + Lead form -->
         <div class="qc-panel" data-step="4">
           <h3>How soon do you need service?</h3>
           <p class="hint">Emergency dispatch carries a premium for after-hours and rush scheduling.</p>
@@ -177,7 +177,7 @@
           <div id="qcFormWrap" style="margin-top:32px; border-top:1px solid var(--line); padding-top:28px;">
             <h3 style="font-size:1.1rem;">Send this estimate to yourself + get a firm quote</h3>
             <p class="hint">Optional &mdash; a technician will confirm the exact price after a quick assessment.</p>
-            <form id="qcLeadForm" data-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form id="qcLeadForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
               <input type="hidden" name="_subject" value="New instant-quote request">
               <input type="hidden" id="qcHiddenSummary" name="Estimate Summary" value="">
               <div class="field-row">
@@ -221,8 +221,8 @@
             </g>
             <circle cx="150" cy="150" r="12" fill="#fff"/>
             <circle cx="150" cy="150" r="6" fill="#0B1F2E"/>
-            <text x="150" y="182" text-anchor="middle" class="gauge-num-text"><tspan id="qcGaugeReadout">20</tspan><tspan class="gauge-percent-text">%</tspan></text>
-            <text x="150" y="201" text-anchor="middle" class="gauge-lbl-text">SITE RISK SCORE</text>
+            <text x="150" y="179" text-anchor="middle" class="gauge-num-text"><tspan id="qcGaugeReadout">20</tspan><tspan class="gauge-percent-text">%</tspan></text>
+            <text x="150" y="197" text-anchor="middle" class="gauge-lbl-text">SITE RISK SCORE</text>
           </svg>
         </div>
         <div class="qc-result-price">
