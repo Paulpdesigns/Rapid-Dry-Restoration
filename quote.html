@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Quote Calculator | Rapid Dry Restoration</title>
+<meta name="description" content="Get an instant estimated price range for water damage restoration or mold remediation based on your square footage, damage type, and severity.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <a href="tel:+18005551234" class="topbar-phone"><span class="pulse-dot"></span> WATER OR MOLD EMERGENCY? CALL NOW: (800) 555-1234</a>
+    <span>24/7/365 DISPATCH &mdash; AVG. ARRIVAL 45 MIN</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 3C17 3 6 15.5 6 22C6 27.5 10.9 32 17 32C23.1 32 28 27.5 28 22C28 15.5 17 3 17 3Z" fill="#FF5A1F"/>
+      </svg>
+      Rapid<span>Dry</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="quote.html">Get a Quote</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:+18005551234" class="btn btn-outline">(800) 555-1234</a>
+      <a href="quote.html" class="btn btn-primary">Instant Quote</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Get a Quote</div>
+    <span class="eyebrow on-dark">Takes About 60 Seconds</span>
+    <h1>Get an instant estimated price range</h1>
+    <p>Answer four quick questions about the damage. The gauge on the right updates live and gives you a real number range &mdash; not a lead-gen placeholder.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="quote-layout" id="quoteCalculator">
+
+      <!-- ===== LEFT: WIZARD ===== -->
+      <div>
+        <div class="qc-steps">
+          <div class="dot" data-dot="1"></div>
+          <div class="dot" data-dot="2"></div>
+          <div class="dot" data-dot="3"></div>
+          <div class="dot" data-dot="4"></div>
+        </div>
+
+        <!-- STEP 1: Damage type -->
+        <div class="qc-panel" data-step="1">
+          <h3>What kind of damage are you dealing with?</h3>
+          <p class="hint">Choose the option that best matches your situation &mdash; you can add both if it applies.</p>
+          <div class="option-grid">
+            <button type="button" class="option-card" data-damage-type="water">
+              <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z" opacity="0"/><path d="M12 3C12 3 5 12 5 16.5A7 7 0 0 0 19 16.5C19 12 12 3 12 3Z"/></svg></div>
+              <h5>Water Damage</h5>
+              <p>Flooding, burst pipe, leak, or standing water</p>
+            </button>
+            <button type="button" class="option-card" data-damage-type="mold">
+              <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/></svg></div>
+              <h5>Mold Growth</h5>
+              <p>Visible mold, musty odor, or staining</p>
+            </button>
+            <button type="button" class="option-card" data-damage-type="both">
+              <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3C12 3 5 12 5 16.5A7 7 0 0 0 19 16.5C19 12 12 3 12 3Z"/></svg></div>
+              <h5>Both</h5>
+              <p>Water damage with mold already present</p>
+            </button>
+            <button type="button" class="option-card" data-damage-type="water" data-note="unsure">
+              <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></div>
+              <h5>Not Sure</h5>
+              <p>We'll estimate for water damage &mdash; a tech confirms on-site</p>
+            </button>
+          </div>
+          <div class="qc-nav">
+            <span></span>
+            <button type="button" class="btn btn-primary" data-qc-next="1" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Square footage -->
+        <div class="qc-panel" data-step="2">
+          <h3>About how large is the affected area?</h3>
+          <p class="hint">A rough estimate is fine &mdash; we'll confirm exact measurements on-site.</p>
+          <div class="slider-block">
+            <div class="slider-value"><span id="sqftValue">900</span> <span>sq ft</span></div>
+            <input type="range" id="sqftSlider" min="100" max="5000" step="50" value="900">
+            <div class="slider-scale"><span>100</span><span>1,250</span><span>2,500</span><span>3,750</span><span>5,000+</span></div>
+          </div>
+          <div class="qc-nav">
+            <button type="button" class="btn btn-outline" data-qc-back>Back</button>
+            <button type="button" class="btn btn-primary" data-qc-next="2">Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Severity -->
+        <div class="qc-panel" data-step="3">
+          <h3>How severe is it?</h3>
+          <p class="hint">This is the single biggest factor in the price &mdash; be as accurate as you can.</p>
+
+          <div id="waterCatBlock" style="display:none;">
+            <p style="font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px;">Water Category</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-water-cat="clean">
+                <h5>Category 1 &mdash; Clean</h5>
+                <p>Supply line, rainwater, appliance overflow</p>
+              </button>
+              <button type="button" class="option-card" data-water-cat="grey">
+                <h5>Category 2 &mdash; Grey</h5>
+                <p>Washing machine, dishwasher, sump pump backup</p>
+              </button>
+              <button type="button" class="option-card" data-water-cat="black" style="grid-column: span 2;">
+                <h5>Category 3 &mdash; Black</h5>
+                <p>Sewage backup, flood water, standing >48 hours</p>
+              </button>
+            </div>
+          </div>
+
+          <div id="moldSevBlock" style="display:none; margin-top:20px;">
+            <p style="font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px;">Mold Severity</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-mold-sev="minor">
+                <h5>Minor</h5>
+                <p>Under ~10 sq ft, surface-level</p>
+              </button>
+              <button type="button" class="option-card" data-mold-sev="moderate">
+                <h5>Moderate</h5>
+                <p>~10&ndash;100 sq ft, or behind a wall</p>
+              </button>
+              <button type="button" class="option-card" data-mold-sev="severe" style="grid-column: span 2;">
+                <h5>Severe</h5>
+                <p>100+ sq ft, multiple rooms, or HVAC-spread</p>
+              </button>
+            </div>
+          </div>
+
+          <div class="qc-nav">
+            <button type="button" class="btn btn-outline" data-qc-back>Back</button>
+            <button type="button" class="btn btn-primary" data-qc-next="3">Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Urgency + Lead form -->
+        <div class="qc-panel" data-step="4">
+          <h3>How soon do you need service?</h3>
+          <p class="hint">Emergency dispatch carries a premium for after-hours and rush scheduling.</p>
+          <div class="option-grid">
+            <button type="button" class="option-card" data-urgency="emergency" style="grid-column: span 2;">
+              <h5>Emergency &mdash; Today</h5>
+              <p>Active flooding or spreading damage right now</p>
+            </button>
+            <button type="button" class="option-card" data-urgency="soon">
+              <h5>Within 24&ndash;48h</h5>
+              <p>Contained but needs prompt attention</p>
+            </button>
+            <button type="button" class="option-card" data-urgency="flexible">
+              <h5>Flexible / Planning</h5>
+              <p>Scheduling ahead, no active water</p>
+            </button>
+          </div>
+
+          <div id="qcFormWrap" style="margin-top:32px; border-top:1px solid var(--line); padding-top:28px;">
+            <h3 style="font-size:1.1rem;">Send this estimate to yourself + get a firm quote</h3>
+            <p class="hint">Optional &mdash; a technician will confirm the exact price after a quick assessment.</p>
+            <form id="qcLeadForm" data-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <input type="hidden" name="_subject" value="New instant-quote request">
+              <input type="hidden" id="qcHiddenSummary" name="Estimate Summary" value="">
+              <div class="field-row">
+                <div class="field"><label for="qcName">Full Name</label><input type="text" id="qcName" name="Name" required></div>
+                <div class="field"><label for="qcPhone">Phone</label><input type="tel" id="qcPhone" name="Phone" required></div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label for="qcEmail">Email</label><input type="email" id="qcEmail" name="Email" required></div>
+                <div class="field"><label for="qcZip">Property ZIP</label><input type="text" id="qcZip" name="ZIP" required></div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Email Me This Estimate</button>
+              <p class="form-note">We'll never sell your information. By submitting, you agree to be contacted about this request.</p>
+            </form>
+            <div class="form-success" id="qcSuccess">
+              <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <h3>Estimate Sent</h3>
+              <p>Check your inbox &mdash; a technician will follow up shortly to confirm final pricing.</p>
+            </div>
+          </div>
+
+          <div class="qc-nav">
+            <button type="button" class="btn btn-outline" data-qc-back>Back</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT: LIVE RESULT ===== -->
+      <div class="qc-result">
+        <div class="gauge-card-head">
+          <h3>Live Estimate</h3>
+          <span class="live">UPDATING</span>
+        </div>
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 300 165" width="100%">
+            <path d="M30,150 A120,120 0 0,1 90,46.1" fill="none" stroke="#17B4C4" stroke-width="16" stroke-linecap="round"/>
+            <path d="M90,46.1 A120,120 0 0,1 210,46.1" fill="none" stroke="#F2A93B" stroke-width="16" stroke-linecap="round"/>
+            <path d="M210,46.1 A120,120 0 0,1 270,150" fill="none" stroke="#FF5A1F" stroke-width="16" stroke-linecap="round"/>
+            <g id="qcGaugeNeedle" style="transform-origin:150px 150px; transition: transform 0.8s cubic-bezier(0.34,1.3,0.4,1);">
+              <line x1="150" y1="150" x2="150" y2="40" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <circle cx="150" cy="150" r="12" fill="#fff"/>
+            <circle cx="150" cy="150" r="6" fill="#0B1F2E"/>
+          </svg>
+          <div class="gauge-readout">
+            <div class="num"><span id="qcGaugeReadout">20</span>%</div>
+            <div class="lbl">Site Risk Score</div>
+          </div>
+        </div>
+        <div class="qc-result-price">
+          <div class="range" id="priceRange">$ &mdash; . &mdash; &mdash;</div>
+          <div class="caption">ESTIMATED PRICE RANGE</div>
+        </div>
+        <div class="qc-summary">
+          <div class="qc-summary-row"><span>Damage type</span><b id="summaryType">&mdash;</b></div>
+          <div class="qc-summary-row"><span>Area</span><b id="summarySize">&mdash;</b></div>
+          <div class="qc-summary-row"><span>Severity</span><b id="summarySeverity">&mdash;</b></div>
+          <div class="qc-summary-row"><span>Timeline</span><b id="summaryUrgency">&mdash;</b></div>
+        </div>
+        <p class="qc-disclaimer">This is a preliminary, automated estimate based on typical regional rates. Final pricing is confirmed after an on-site inspection and may vary based on structural access, materials, and code requirements.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section--tight section--band">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <span class="eyebrow">Prefer To Talk It Through?</span>
+      <h2 style="font-size:clamp(1.6rem,2.6vw,2rem);">A technician can quote you over the phone right now</h2>
+      <p>Call (800) 555-1234 &mdash; available 24/7, no hold music.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="color:#fff;">
+          <svg class="brand-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 3C17 3 6 15.5 6 22C6 27.5 10.9 32 17 32C23.1 32 28 27.5 28 22C28 15.5 17 3 17 3Z" fill="#FF5A1F"/>
+          </svg>
+          Rapid<span>Dry</span>
+        </a>
+        <p>Licensed water damage restoration &amp; mold remediation. Family-owned, IICRC-certified, available around the clock.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#extraction">Water Extraction</a></li>
+          <li><a href="services.html#mold">Mold Remediation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>24/7 Emergency Line</h4>
+        <ul>
+          <li><a href="tel:+18005551234" style="font-family:var(--font-mono); font-size:1.1rem; color:#fff;">(800) 555-1234</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Rapid Dry Restoration. All rights reserved.</span>
+      <span>License #WD-00000 &middot; IICRC Certified Firm</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/quote-calculator.js"></script>
+</body>
+</html>
