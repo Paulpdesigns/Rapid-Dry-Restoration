@@ -33,13 +33,20 @@
     }
   });
 
-  /* ---------- Sticky header shrink ---------- */
+  /* ---------- Sticky header shrink + measured height for mobile nav ---------- */
   var header = document.querySelector('.site-header');
   if (header) {
+    var setHeaderHeightVar = function () {
+      document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    };
     var onScroll = function () {
       header.classList.toggle('is-scrolled', window.scrollY > 24);
+      setHeaderHeightVar();
     };
     document.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', setHeaderHeightVar);
+    window.addEventListener('load', setHeaderHeightVar);
+    setHeaderHeightVar();
     onScroll();
   }
 
